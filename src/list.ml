@@ -237,6 +237,11 @@ let findi t ~f =
   loop 0 t
 ;;
 
+let findi_exn t ~f =
+  match findi t ~f with
+  | None -> raise Not_found
+  | Some x -> x
+
 let find_mapi t ~f =
   let rec loop i t =
     match t with

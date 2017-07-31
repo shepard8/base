@@ -188,6 +188,11 @@ let%test _ =
 
 let%test _ = for_all2_exn [] [] ~f:(fun _ _ -> assert false)
 
+let%test _ = findi [0;5;2;1;4] ~f:( = ) = Some (0, 0)
+let%test _ = findi [3;5;2;1;4] ~f:( = ) = Some (2, 2)
+let%test _ = findi [3;5;1;1;4] ~f:( = ) = Some (4, 4)
+let%test _ = findi [3;5;1;1;2] ~f:( = ) = None
+
 let%test _ = find_mapi [0;5;2;1;4] ~f:(fun i x -> if i = x then Some (i+x) else None) = Some 0
 let%test _ = find_mapi [3;5;2;1;4] ~f:(fun i x -> if i = x then Some (i+x) else None) = Some 4
 let%test _ = find_mapi [3;5;1;1;4] ~f:(fun i x -> if i = x then Some (i+x) else None) = Some 8

@@ -169,7 +169,10 @@ val hd_exn : 'a t -> 'a
 (** Return the given list without its first element. Raise if the list is empty. *)
 val tl_exn : 'a t -> 'a t
 
+(** Like [find] and [find_exn], but pass the index as an argument and return a pair of
+ * the index and the value found instead of just the value. *)
 val findi : 'a t -> f:(int -> 'a -> bool) -> (int * 'a) option
+val findi_exn : 'a t -> f:(int -> 'a -> bool) -> (int * 'a)
 
 (** [find_exn t ~f] returns the first element of [t] that satisfies [f].  It raises
     [Not_found] if there is no such element. *)
